@@ -106,14 +106,14 @@ Steven M. Gallo\\ \vspace{6pt}
 In this paper we use the bibliometrics approach to evaluate the scientific impact of XSEDE.
 By utilizing publication data from various sources, e.g., ISI Web of Science and
 Microsoft Academic Graph, we calculate the impact metrics of XSEDE publications
-and show how they compare with the rest from the same field of study, or the peers
+and show how they compare with non-XSEDE publication from the same field of study, or non-XSEDE "peers"
 from the same journal issue. We explain in detail how we retrieved, cleaned up,
 and curated millions of related publication entries.
 We then introduce the metrics we used for evaluation and comparison, and the methods
-how we calculate them. Detailed analysis results of Field Weighted Citation Impact (FWCI)
+used to calculate them. Detailed analysis results of Field Weighted Citation Impact (FWCI)
 and the peers comparison will be presented and discussed. We also explain briefly how the same
 approaches could be used to evaluate publications from a similar organization or
-institute, to show the generalization and ubiquitous nature of the presented
+institute, to demonstrate the general applicability of the present
 evaluation approach.
 
 
@@ -133,87 +133,84 @@ performance measures]
 
 \section{Introduction} 
 
-To identify the impact on {\em scientific advancements enabled by enhanced
+To identify the impact of {\em scientific advancements enabled by enhanced
 cyberinfrastructure}, it is important to conduct a comprehensive analysis
-of achievements that can be attributed to the use of advanced infrastructure,
-such as provided by the Extreme Science and Discovery Environment (XSEDE) \cite{www-xsede,xsede}.
+of achievements that can be attributed to the use of the advanced infrastructure,
+such as that provided by the Extreme Science and Discovery Environment (XSEDE) \cite{www-xsede,xsede}.
 
 We use the bibliometrics approach to evaluate the scientific impact of XSEDE. By
 acquiring related publication and citation data from multiple sources we calculate various
-metrics that show the impact of the publications and how they are compared to the peers that
-were published in the same journals, or in the same field of study. By crunching millions of
-publication data entries we normalized the citation count by field of study for comparison to
-eliminate the impact from the difference of field of study. We also introduced a novel approach
-to compare the target publications group with their peers published in the same publication
-venue, to further show how the target publications group performs compared to their peers
+metrics that show the impact of the publications and how they compare to their non-XSEDE peers that
+were published in the same journals, or in the same field of study. By processing millions of
+publication data entries we normalized the citation count by field of study. This essentially
+eliminates the problem that different fields of study have different publication characteristics. We also introduced a novel method to compare the target publications group with their peers published in the same publication venue to further show how the target publications group performs compared to their peers
 within the same publication venue.
 
 
 \section{Related Works} \label{S:related}
 
-Bibliometrics based analysis has been the most commonly used, a de facto standard way to evaluate the
+Bibliometrics based analysis has been the most commonly used method to evaluate the
 research impact of an individual, a research group, or even an organization. Publication count
-and citation count based metrics provided an effective way to show the quantity and quality,
-and the impact they generated, of scientific research activities. For instance it was used to evaluate the
-quality of research in UK \cite{thomas1998institutional, penfield2014assessment}. Most popular
+and citation count based metrics provide an effective way to show the quantity and quality,
+and the impact of scientific research activities. For instance, it was used to evaluate the
+quality of research in the United Kingdom \cite{thomas1998institutional, penfield2014assessment}. Most popular
 college/university rankings use citation based bibliometrics as an important factor to evaluate
-their research qualities, e.g., the overall publication count and citation count in a certain year
-or a year range; number or papers published in certain top journals; number of highly cited papers
-judging by if the citation count of a paper is on the top one percentage, etc.
+the quality of their research, e.g., the overall publication count and citation count in a certain year
+or a year range; the number of papers published in certain top journals; the number of highly cited papers;
+rating the citation count of a paper or its percentile ranking, etc.
 
-As a virtual organization similar to XSEDE, Compute Canada also used bibliometrics based analysis
-to evaluate their impact of research \cite{www-computecanada}.
+Compute Canada, a virtual organization similar to XSEDE, also used a bibliometrics based analysis
+to evaluate the impact of their research \cite{www-computecanada}.
 
 Some previous work also studied the impact of TeraGrid \cite {bollen2011and}, the early version
 of XSEDE, by analyzing the publications for one specific reserach allocation quarter, which involved
-very limited number of researchers and publications. Our work is unique in that it provides
+a very limited number of researchers and publications. Our work is unique in that it provides
 a {\em comprehensive} analysis superior in data volume, and with noval analyses approach such as Field Weighted
 Citation Impact and journal publication-based peers comparison.
 
-In addition to the more intuitive direct measuring of publication and citation count, some other
+In addition to the more intuitive direct metrics of publication and citation count, some other
 derivative metrics such as h-index \cite{hirsch2005index} and g-index \cite{egghe2006theory} combines
-both publication and citation count to generate one metric. I10-index \cite {www-i10index} on another
-hand measures only the count of those publications received at least ten references by other publications.
+both publication and citation count to generate one metric. I10-index \cite {www-i10index} in contrast measures only the count of those publications that received at least ten references by other publications.
 In our evaluation we calculated such metrics for various XSEDE research entities to show the impact and comparison of the entities
 on the same level, e.g., individual, project, research field of study, organization, etc. The results
 are presented on the XDMoD scintific impact portal \cite{www-xdmod-sciimp}.
 
 
-Usage based metrics\cite {Bollen:2007:MUM:1255175.1255273,Bollen:2008:TUI:1378889.1378928} were also proposed,
-in which it uses the usage, such as views and downloads, instead of more formal citations, of publications
-to evaluate the impact. However the actual use of this approach may be limited due to the fact that the usage
+Usage based metrics\cite {Bollen:2007:MUM:1255175.1255273,Bollen:2008:TUI:1378889.1378928} have also been proposed,
+in which usage metrics, such as views and downloads, instead of the more formal citations of publications are employed
+to evaluate scientific impact. However the applicability of this approach may be limited due to the fact that the usage
 data may not be available from a publisher, or different publishers may have different cretiria to measure
 the usage data thus created an inconsistent comparison base for papers published in different publishers.
-In our study we did not use such metrics in the evaluation due to this reason.
+For this reason we did not use such metrics in the present study.
 
 \section{Methodology} \label{S:methodology}
 
 We will first introduce the methodology we have used in the bibliometrics analysis to evaluate the
 scientific impact of XSEDE publications. This includes the clarification of the dataset and data sources
-used in the analysis; the approaches to define and calculate the various metrics; and the information
-of the software and service framework developed to facilitate this evaluation study.
+used in the analysis, the approaches to define and calculate the various metrics, and the information
+about the software and service framework developed to facilitate this evaluation study.
 
 \subsection{Dataset and data sources}
 
 Several data sets and sources are involved in this study. These include:
 
 \begin{itemize}
-    \item XSEDE publications (also include those from TeraGrid). These data are from
-two sources. One is from the user-submitted data from XSEDE user portal; another
-is from the past TeraGrid/XSEDE project reports to NSF. For the latter we extracted the publications
-appendix from the report text and then parsed the publication records before putting
-them into structured data into a database. The raw entries were over 20 thousand.
+    \item XSEDE publications (including those from TeraGrid). These data are from
+two sources. One is from the user-submitted data from the XSEDE user portal; another
+is from the past TeraGrid/XSEDE project reports to NSF. For the latter, we extracted the publications
+appendix from the reports and then parsed the publication records text before putting
+them into a structured database. There were over 20 thousand raw entries.
     \item Microsoft Academic Graph (MAG) data during the same time period (2005 - 2016) as the XSEDE
-publications. This dataset were retrieved with the API provided by Microsoft. The data were
+publications. This dataset was retrieved with the API provided by Microsoft. The data were
 then cleaned up and put into a MongoDB database. This dataset has about 58 million entries.
-    \item For the publication venues with at least 10 XSEDE papers appeared in them, we retrieved
-all the publications from them during the same time period (2005 - 2016) to facilitate the peers
+    \item For the publication venues with at least 10 XSEDE papers appearing in them, we retrieved
+all the publications from the same time period (2005 - 2016) to facilitate the peers
 comparison study. This dataset has about 2 million entries.
 \end{itemize}
 
 \subsection{Field Weighted Citation Impact Analysis}
 
-Field Weighted Citation Impact (FWCI) metric is proposed as part of the
+The field Weighted Citation Impact (FWCI) metric is proposed as one of the
 snowball metrics \cite{colledge2014snowball}. It calculates the average
 citation count of a target group of publications based on their field of
 science, and then compare that with the average citation count of the whole
@@ -221,10 +218,10 @@ field of science in the same time period. The result is a ratio
 
 \[	fwci = avg(CC_group)/avg(CC_field) \]
 
-So a fwci value greater than 1 means the interesed publication group had higher
-citation comparing to the expected value of the field of science, while a value
-less than 1 means the average citation the group received was less than the expected
-value by the field.
+A fwci value greater than 1 indicates that the pertinent publication group had more
+citations than the expected value of the field of science, while a value
+less than 1 indicates that the average citation count that the group received was less than the expected
+value for the applicable field of science.
 
 In this study we followed the following process to calculate the FWCI values for the
 XSEDE publications.
@@ -232,73 +229,72 @@ XSEDE publications.
 \begin{enumerate}
 \item Query every raw XSEDE publication by title against the MAG data set,
 and verify the matching ones by checking other properties such as published year. After this
-process we have found the verified matching records in the MAG for all valid XSEDE publications.
-During this process we enabled elasticsearch [?] to improve both the accuracy and performance
-of the query due to the size of the dataset.
-\item For each of the 58 million MAG data, we use the assigned field of study values to trace up
-to the top levels of the fields along with other related data from MAG. This process narrowed
+process we have identified the verified matching records in the MAG for all valid XSEDE publications.
+During this process we enabled elasticsearch to improve both the accuracy and the performance
+of the query.  This is important because of the size of the dataset.
+\item For each of the 58 million MAG data, we use the assigned field of study values, along with other related data form MAG, to trace upward
+to the top levels of the hierarchical fields. This process narrowed
 down the ~30k different assigned fields of study to 19 overall top level fields of study as
 defined in the MAG dataset.
-One thing to notice was that each publications were assigned to multiple science fields in the
+One thing to note was that each publication was assigned to multiple science fields in the
 original publication records, and the final top level science field category of a publication
-may not be unique as well. However as a lot of researches and publications are themselves
-multidisciplineary we think such results are valid and acceptable. In the following analysis
-we counted a publication in all the top level science fields we found following the tracing
-up process.
-\item Once we have for each and every publications in the MAG dataset, we can calculate the average
+may not be unique either. However as a lot of research publications are themselves
+multidisciplineary we think that such results are valid and acceptable. In the following analysis
+we counted a publication in all the top level science fields we found following the tracing process.
+\item Once we have each and every publications in the MAG dataset, we can calculate the average
 citation count by each top level field, for all the MAG publications and XSEDE publications
-respectively. And following that we could calculate the ratio to get the FWCI values.
+respectively. Following that we can calculate the ratio to get the FWCI values.
 \end{enumerate}
 
 \subsection{Metric for Journal Publication-based Peer Comparison} \label{S:metric}
 
-We followed this process to obtain the needed data for the analysis.
+We followed this process to obtain the data needed for the analysis.
 
 \begin{enumerate}
-\item We started this analysis by querying all XSEDE publications against the third party
+\item We started this analysis by querying all XSEDE publications against a third party
 data source - ISI Web of Knowledge \cite{www-isiwos}. The XSEDE data, as explained before,
 contains the publication entries extracted from past TeraGrid/XSEDE reports to NSF, and the
-publication data from XSEDE user portal. Both are user-submitted data or compiled from user-submitted
+publication data from the XSEDE user portal. Both are user-submitted data or compiled from user-submitted
 data, thus this query and verification process ensures the quality and accuracy of the dataset.
 The final results were about 9 thousands verified publications at the time of the study.
 
 \item From this verified publications list, we find the subset of all the publication venues with at least 10
-XSEDE publications published on them. And for each of the publications published on these venues,
+XSEDE publications. For each of the publications published in these venues
 we retrieve from ISI Web of Knowledge the extended metadata to get the exact volume and issue
 number of the publication venue where the publication was published. The reasons why we chose
-a threshold value 10 to identify a publication venue subset are:
+a threshold value of 10 to identify a publication venue subset are:
 \begin{enumerate}
 \item This ensures the statistical significance of the analysis results.
 \item This eases the data retrieval work substantially. While we have ~1400 distinct publication
 venues identified from all the verified XSEDE publications, the subset when we use 10 as the minimum
-number of publications appeared on the venue was cut to ~120 publication venues.
-\item The actual involved XSEDE publications in the peeers comparison was about 5 thousands, or about
+number of publications appearing in the venue was reduced to ~120 publication venues.
+\item Using this criterion, the number of XSEDE publications in the peers comparison was about 5 thousands, or about
 56\% of all the verified ones. This represents a good portion of all the data.
 \end{enumerate}
 
-\item For all the ~120 publication venues, we retrieved all the publications data published on them
+\item For all the ~120 publication venues, we retrieved all the publications data published in them
 during the same time period as the TeraGrid/XSEDE publications (2005~2016).
 \end{enumerate}
 
-Based on these data we can form the suitable comparison peers groups, which are the each single
-journal issue (or journal volume when no issue data available for some publications) if an XSEDE
-publication appeared on it. For each comparison peers group, we rank the
+Based on these data, we can form suitable comparison peers groups, which are each single
+journal issue (or journal volume when no issue data available for some publications) that an XSEDE
+publication appeared in. For each comparison peers group, we rank the
 citation count of each publication (including the XSEDE ones and the peers). The calculated percentile
 ranking values serve as the basis of the peer comparison study. The comparison is between publications
-in such journals that we identified as XSEDE papers and those that were not.
+that we identified as XSEDE papers and those that were not.
 
 To apply the percentile ranking to the field of science of XSEDE publications
 among the journal issues where each publication was published, we aggregate
-them based on FOS, based on the project field of science data obtained from XSEDE central
-database (XDcDB). We then calculated the average and median percentile rank for each field
+them based on FOS, based on the project field of science data obtained from the XSEDE central
+database (XDcDB). These XSEDE fields of science are self reported by the researchers. We then calculated the average and median percentile rank for each field
 of science.
 
 To identify the FOS for each publication, we followed this process:
 
 \begin{enumerate}
 
-\item Find the FOS information out of past XSEDE quarterly reports as this
-information may have explicitly been associated with them.
+\item Find the FOS information for each publication out of the past XSEDE quarterly reports as this
+information may have been explicitly associated with the publication.
 
 \item Find the FOS information from the project data in the XDcDB. Similar to the case mentioned
 in MAG data pre-processing, it is possible that one project is associated with more
@@ -306,7 +302,7 @@ than one FOS. In such cases we counted the publications of the project for all i
 
 \begin{enumerate}
 
-\item Some publications from XSEDE quarterly reports were identified only by
+\item Some publications from the XSEDE quarterly reports were identified only by
 the project proposal number. We mapped them to the project charge number
 and account id used internally within the XSEDE central database.
 
@@ -328,12 +324,12 @@ services. The service-oriented system is a layered architecture consisting of co
 \begin{itemize}
 \item A data layer that retrieves publication and citation data from external sources.
 This includes data from the ISI Web of Knowledge;
-Microsoft Academic Graph; Google Scholar, and even NSF award database.
+Microsoft Academic Graph; Google Scholar, and even the NSF award database.
 \item Business logic layer that deals with:
 \begin{itemize}
 \item parsing and processing while correlating data from various databases
 and services, such as the XSEDE central database (XDcDB).
-\item metrics generation and an analysis system for different aggregation
+\item a metrics generation and analysis system for different aggregation
 levels -- users, projects, organization, field of science.
 \end{itemize}
 \item a presentation layer using a lightweight portal in addition to exposing
@@ -343,15 +339,15 @@ some data via a RESTful API \cite{Wang:2014:TSI:2616498.2616507}.
 Due to the use of the Software as a Service (SaaS) approach, our framework is
 expandable as we are able to integrate new services and data resources
 as required. Hence our framework can be adapted to other resource providers
-as demonstrated in \cite{tas2015}. Obviously, Adaptation could mean
+as demonstrated in \cite{tas2015}. Obviously, adaptation could mean
 that we simply have to change the bibliometric data, which could mean that
 we need to integrate new data sources and curation services.
 
 \subsubsection{Service Integration into XSEDE and XDMoD}
 
 Our current framework for XSEDE includes services that are motivated by our
-initial findings from XSEDE bibliometric data. A RESTful service is integrated
-into XSEDE User Portal as part of the publication discovery service.
+initial findings from the XSEDE bibliometric data. A RESTful service is integrated
+into the XSEDE User Portal as part of the publication discovery service.
 
 The various impact metrics of different levels of XSEDE entities - person, project,
 organization, field of study - as well as part of the analyses are available on
@@ -362,15 +358,15 @@ the XDMoD scientific impact portal \cite{www-xdmod-sciimp}.
 \subsection{Field Weighted Citation Impact Metrics}
 
 First we show the calculated FWCI values in Figure \ref{F:fwci_fwci}. The plot
-listed the FWCI for the top level fields of science as defined from the MAG data.
-Each data point also has the number of XSEDE publication as well as the number of
-all publications in that field. The red veticle lines indicates the points for
+lists the FWCI for the top level fields of science as defined from the MAG data.
+Each data point also has the number of XSEDE publications as well as the number of
+all publications in that field. The red vertical line indicates the point at which 
 FWCI=1. The figure shows all fields but one (political science, with only 3 publications
-) had FWCI values greater than 1, with majority fields having much higher values.
+) had FWCI values greater than 1, with the majority fields having much higher values.
 
-In figure \ref{F:fwci_nxd} we display the similar data but shows and sorts the data
-based on the number of XSEDE publications in the field. This shows better the FWCI
-for the fields that majority of XSEDE publications fell in.
+In figure \ref{F:fwci_nxd} we display the same data but rsorted 
+based on the number of XSEDE publications in the field. This emphasizes the FWCI
+for the fields that the majority of the XSEDE publications fell within.
 
 \begin{figure}[htb!]
     \includegraphics[width=0.95\columnwidth]{images/fwci_fwci.pdf}
@@ -384,12 +380,12 @@ for the fields that majority of XSEDE publications fell in.
     \label{F:fwci_nxd}
 \end{figure}
 
-Figure \ref{F:FWCIwCC} compares the expected citation count and the actual average
-citation count for each field. This again shows how XSEDE publications received much
-higher citations.
+Figure \ref{F:FWCIwCC} compares the expected citation count based on all publications in a given field of science with the actual average
+citation count for XSEDE publications in each field of science. This again indicates that XSEDE publications received much
+higher citation counts and implies a higher scientific impact than their non-XSEDE peers.
 
 In figure \ref{F:FWCI_CC} we show the extra citations XSEDE publications receive for
-each field, comparing to the expected value.
+each field, compared to the expected overall field of science value.
 
 \begin{figure}[htb!]
     \includegraphics[width=0.95\columnwidth]{images/FWCIwCC.pdf}
@@ -464,10 +460,9 @@ political science & 0 & 0.0 & 0 & 0.0 & 0.2 & 3 \\ [1ex]
 
 \subsection{XSEDE Peer Data Analysis} \label{S:xsede}
 
-Now we present the results from the peer compasiron study in a number of graphs
-and tables. Figure \ref{F:isi_ppers_byj_mean} shows the average percentile rank
-of XSEDE publications grouped by each publication venue. Figure \ref{F:isi_peers_by_median}
-shows the similar but the median percentile rank values.
+Now we present a number of graphs and tables that show the results from the peer comparison study. Figure \ref{F:isi_ppers_byj_mean} shows the average percentile rank
+of XSEDE publications grouped by each publication venue. Figure \ref{F:isi_peers_byj_median}
+shows the same publication data but presents the median percentile rank values.
 
 \begin{figure*}[htb!]
   \centering
@@ -483,11 +478,11 @@ shows the similar but the median percentile rank values.
     \label{F:isi_peers_byj_median}
 \end{figure*}
 
-When we aggregate the results in fields of study instead of individual journal, we got
-the result as in Figure \ref{F:isi_peers_fos}.
+When we aggregate the results by fields of study instead of by individual journal, we get
+the results shown in Figure \ref{F:isi_peers_fos}.
 
 These show that for majority of the publications venues, or fields of science, XSEDE publications
-ranked at a higher percentile based on the citation count.
+have a higher percentile ranking based on citation count. This figure also indicates how much impact that access to XSEDE resources has on each individual field of science.
 
 \begin{figure*}[htb!]
   \centering
@@ -497,9 +492,9 @@ ranked at a higher percentile based on the citation count.
 \end{figure*}
 
 When we consider the overall comparison results, Figure \ref{F:ptranking_hist} shows
-the distribution of the XSEDE publication's percentile rank in each 10\% increment group.
-Again the result show the distribution skewed to the higher end, which means more
-XSEDE publications were ranked on the higher end.
+the distribution of the XSEDE publication's percentile rank in each 10\% increment group. Values above 50\% indicate that the XSEDE publications are cited at a higher rate than their non-XSEDE peers.
+Again the result show the distribution skewed to the higher end, which means that
+XSEDE publications are cited more frequently than their non-XSEDE peers.
 
 \begin{figure}[htb!]
     \includegraphics[width=0.95\columnwidth]{images/ptranking_histogram.pdf}
@@ -508,14 +503,14 @@ XSEDE publications were ranked on the higher end.
 \end{figure}
 
 Figure \ref{F:ptranking_cdf} shows the emperical cumulative distribution of the
-percentile ranks comparing to that of the peers group.
+percentile ranks comparing to that of the peers group. The XSEDE publication curve is entirely to the right of the overall publication curve which is another indication that the XSEDE publcations have a higher impact.
 Figure \ref{F:xd_peers_density} shows the kernel density of the distributions
 of XSEDE publications' percentile ranking and that of peers'. As expected,
 the non-XSEDE peer publications are evenly distributed by percentile
-ranks with spike at 50\% mostly coming from more recently published journal
+ranks with the spike at 50\% mostly coming from more recently published journal
 issues where most publications were not yet cited. The XSEDE publications are
 weighted to the higher percentile ranks side again. This again shows that XSEDE
-publications tend to be more highly cited comparing to their peers published in
+publications tend to be more highly cited compared to their peers published in
 the same journal issue.
 
 \begin{figure}[htb!]
@@ -532,10 +527,10 @@ of XSEDE publications' percentile ranking and that of peers'}
 \end{figure}
 
 Table \ref{T:groups_stats} lists the average and median rankings and citations
-received of the two groups to evaluate and compare.
-We used several non-parametric statistical tests to decide whether the population distributions
-are identical without assuming them to follow the normal distribution.
-We used Mann-Whitney-Wilcoxon test \cite{mann1947test}, Mood's median test \cite{brown1951median},
+received by XSEDE and non-XSEDE peer publication groups.
+We used several non-parametric statistical tests to decide whether the XSEDE and non-XSEDE population distributions
+are identical without assuming that they follow a normal distribution.
+We used the Mann-Whitney-Wilcoxon test \cite{mann1947test}, Mood's median test \cite{brown1951median},
 and Kruskal-Wallis test \cite{kruskal1952use}. The results are as the following.
 
 Wilcox test for citation count
@@ -568,14 +563,13 @@ Kruskal-Wallis Test for percentile ranking
 \item Kruskal-Wallis chi-squared = 632.35, df = 1, p-value < 2.2e-16
 \end{itemize}
 
-We performed a T-test to
-test if the citation differences were statistically significant.
-
-Even though the distribution of the citation count of the XSEDE publication group we are study,
-and the peers group we are comparing to, are not necessarily normal distribution, due to the central limit theorem,
-when the sample size is large enough, it is rational to use T-test to not only test if there is statistical
-difference of the two group, as having been shown by the several previous tests, but also quantifies the
-difference of the mean. The t-test results for both citation count and percentile ranking are as below.
+All of these results strongly indicate that the differences that we see between the XSEDE and the non-XSEDE publication metrics are statistically significant. 
+We also performed a T-test to
+test if the citation differences were statistically significant. Even though the distribution of the citation count of the XSEDE publication group
+and the peers group are not necessarily normally distributed, due to the central limit theorem,
+when the sample size is large enough, it is rational to use the T-test to not only test if there is a statistical
+difference between the two groups, as having been shown by the several previous tests, but also to quantify the
+difference between the means. The t-test results for both citation count and percentile ranking are given below.
 
 \begin{itemize}
 \item T=9.8328, df=5105.5, p-value< 2.2e-16, 95\% confidence interval: $[10.90, 16.32]$
@@ -606,11 +600,11 @@ statistically higher mean citation rate than the non-XSEDE peer group.
 
 \subsubsection{Journal peer comparison based on MAG data}
 
-While we first incorporatd the MAG data in order to evaluate the field weighed impact
-of XSEDE publications, we could follow the same approach as done using ISI data to conduct
-the same peer comparison study. Figure \ref{F:ms_ppeers_byj_mean} and Figure \ref{F:ms_peers_byj_median}
-shows the average and median percentile ranking for XSEDE publications by each journal using
-MAG data. The overall results are pretty similar to what we got from the study with ISI data.
+Although we first incorporatd the MAG data in order to evaluate the field weighed impact
+of the XSEDE publications, we can follow the same approach as was done using the ISI data to conduct
+a similar peer comparison study. Figure \ref{F:ms_peers_byj_mean} and Figure \ref{F:ms_peers_byj_median}
+show the average and median percentile ranking for XSEDE publications by each journal using
+MAG data. The overall results are pretty similar to what we got from the study with the ISI data.
 
 \begin{figure*}[htb!]
   \centering
@@ -628,20 +622,20 @@ MAG data. The overall results are pretty similar to what we got from the study w
 
 \section{Conclusion} \label{S:conclusion}
 
-We evaluated the scientific impact of XSEDE by examining its publications that
-resulted from using XSEDE resources. By curating the XSEDE publication data with
-cleaning up, verifying and correlating with various data sources, we obtained
-substantially valuable data to compare and evaluate the impact of XSEDE publications.
+We evaluated the scientific impact of XSEDE by examining the publications that
+were enabled by having access to the XSEDE resources. By curating the XSEDE publication data including
+cleansing, verifying and correlating the various data sources, we obtained
+ a substantial valuable dataset with which to compare and evaluate the scientific impact of XSEDE itself.
 While using two distinct analysis - Field Weighted Citation Impact analysis,
 and another novel journal publications-based peer comparison study, we found that
-XSEDE publications tend to be cited more than the non-XSEDE publications group.
+XSEDE publications tend to be cited more than non-XSEDE publications.
 Various statistical tests show the results are statistically significant.
-The results from this study could give information to the XSEDE leadership team
-and the funding agency, to possibly impact the management and certain policy
-of the facility, e.g., to provide useful information to the resource allocation
-committee during selecting proposals to approve the usage requsts.
-While we showed the study extensively with XSEDE data, the approaches used could
-be ubiquitous and generalized to be used to evaluate similar facilities or groups.
+The results from this study could potentially be used to inform to the XSEDE leadership team
+and the funding agency about the management
+of the facility, for example, to provide useful information to the resource allocation
+committee during proposal selection and approval.
+While the present study dealt exclusively with XSEDE data, the approaches and methods developed can
+be applied to evaluate publication data from avariety of different facilities or groups.
 In fact we have done similar analyses for NCAR, BlueWaters, and Bridges using the
 developed methodology and software framework.
 
