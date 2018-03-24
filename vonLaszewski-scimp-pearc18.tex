@@ -58,11 +58,11 @@
     pdfproducer={}, % producer of the document 
     pdfkeywords={bibliometrics} {hindex} {XSEDE} {FWCI}, % list of keywords 
     pdfnewwindow=true,      % links in new window 
-    colorlinks=false,       % false: boxed links; true: colored links 
-    linkcolor=red,          % color of internal links (change box color with linkbordercolor) 
-    citecolor=green,        % color of links to bibliography 
-    filecolor=magenta,      % color of file links 
-    urlcolor=cyan           % color of external links 
+    colorlinks=true,     % false: boxed links; true: colored links 
+    linkcolor=black,     % color of internal links (change box color with linkbordercolor) 
+    citecolor=black,     % color of links to bibliography 
+    filecolor=black,     % color of file links 
+    urlcolor=black       % color of external links 
 } 
 
 \begin{document}
@@ -179,10 +179,10 @@ research~\cite{www-computecanada}.
 
 Some previous work also studied the impact of
 TeraGrid~\cite{bollen2011and}, the early version of XSEDE, by
-analyzing the publications for one specific reserach allocation
+analyzing the publications for one specific research allocation
 quarter, which involved a very limited number of researchers and
 publications. Our work is unique in that it provides a {\em
-  comprehensive} analysis superior in data volume, and with noval
+  comprehensive} analysis superior in data volume, and with novel
 analyses approach such as Field Weighted Citation Impact and journal
 publication-based peers comparison.
 
@@ -196,7 +196,7 @@ other publications.  In our evaluation we calculated such metrics for
 various XSEDE research entities to show the impact and comparison of
 the entities on the same level, e.g., individual, project, research
 field of study, organization, etc. The results are presented on the
-XDMoD scintific impact portal~\cite{www-xdmod-sciimp}.
+XDMoD scientific impact portal~\cite{www-xdmod-sciimp}.
 
 
 Usage based
@@ -206,7 +206,7 @@ downloads, instead of the more formal citations of publications are
 employed to evaluate scientific impact. However the applicability of
 this approach may be limited due to the fact that the usage data may
 not be available from a publisher, or different publishers may have
-different cretiria to measure the usage data thus created an
+different criteria to measure the usage data thus created an
 inconsistent comparison base for papers published in different
 publishers.  For this reason we did not use such metrics in the
 present study.
@@ -232,7 +232,7 @@ include:
   reports to NSF. For the latter, we extracted the publications
   appendix from the reports and then parsed the publication records
   text before putting them into a structured database. There were over
-  20 thousand raw entries.
+  twenty thousand raw entries.
 \item Microsoft Academic Graph (MAG) data during the same time period
   (2005 - 2016) as the XSEDE publications. This dataset was retrieved
   with the API provided by Microsoft. The data were then cleaned up
@@ -269,7 +269,7 @@ values for the XSEDE publications.
   set, and verify the matching ones by checking other properties such
   as published year. After this process we have identified the
   verified matching records in the MAG for all valid XSEDE
-  publications.  During this process we enabled elasticsearch to
+  publications.  During this process we enabled elastic-search to
   improve both the accuracy and the performance of the query.  This is
   important because of the size of the dataset.
 \item For each of the 58 million MAG data, we use the assigned field
@@ -281,7 +281,7 @@ values for the XSEDE publications.
   science fields in the original publication records, and the final
   top level science field category of a publication may not be unique
   either. However as a lot of research publications are themselves
-  multidisciplineary we think that such results are valid and
+  multi-disciplinary we think that such results are valid and
   acceptable. In the following analysis we counted a publication in
   all the top level science fields we found following the tracing
   process.
@@ -304,8 +304,8 @@ We followed this process to obtain the data needed for the analysis.
   reports to NSF, and the publication data from the XSEDE user
   portal. Both are user-submitted data or compiled from user-submitted
   data, thus this query and verification process ensures the quality
-  and accuracy of the dataset.  The final results were about 9
-  thousands verified publications at the time of the study.
+  and accuracy of the dataset.  The final results were about nine
+  thousand verified publications at the time of the study.
 
 \item From this verified publications list, we find the subset of all
   the publication venues with at least 10 XSEDE publications. For each
@@ -323,7 +323,7 @@ We followed this process to obtain the data needed for the analysis.
   of publications appearing in the venue was reduced to ~120
   publication venues.
 \item Using this criterion, the number of XSEDE publications in the
-  peers comparison was about 5 thousands, or about 56\% of all the
+  peers comparison was about five thousand, or about 56\% of all the
   verified ones. This represents a good portion of all the data.
 \end{enumerate}
 
@@ -441,7 +441,7 @@ FWCI=1. The figure shows all fields but one (political science, with
 only 3 publications ) had FWCI values greater than 1, with the
 majority fields having much higher values.
 
-In Figure \ref{F:fwci_nxd} we display the same data but rsorted based
+In Figure \ref{F:fwci_nxd} we display the same data but resorted based
 on the number of XSEDE publications in the field. This emphasizes the
 FWCI for the fields that the majority of the XSEDE publications fell
 within.
@@ -547,7 +547,7 @@ political science & 0 & 0.0 & 0 & 0.0 & 0.2 & 3 \\ [1ex]
 \subsection{XSEDE Peer Data Analysis} \label{S:xsede}
 
 Now we present a number of graphs and tables that show the results
-from the peer comparison study. Figure \ref{F:isi_ppers_byj_mean}
+from the peer comparison study. Figure \ref{F:isi_peers_byj_mean}
 shows the average percentile rank of XSEDE publications grouped by
 each publication venue. Figure \ref{F:isi_peers_byj_median} shows the
 same publication data but presents the median percentile rank values.
@@ -596,11 +596,11 @@ publications are cited more frequently than their non-XSEDE peers.
     \label{F:ptranking_hist}
 \end{figure}
 
-Figure \ref{F:ptranking_cdf} shows the emperical cumulative
+Figure \ref{F:ptranking_cdf} shows the empirical cumulative
 distribution of the percentile ranks comparing to that of the peers
 group. The XSEDE publication curve is entirely to the right of the
 overall publication curve which is another indication that the XSEDE
-publcations have a higher impact.  Figure \ref{F:xd_peers_density}
+publications have a higher impact.  Figure \ref{F:xd_peers_density}
 shows the kernel density of the distributions of XSEDE publications'
 percentile ranking and that of peers'. As expected, the non-XSEDE peer
 publications are evenly distributed by percentile ranks with the spike
@@ -705,7 +705,7 @@ the non-XSEDE peer group.
 
 \subsubsection{Journal peer comparison based on MAG data}
 
-Although we first incorporatd the MAG data in order to evaluate the
+Although we first in-cooperated the MAG data in order to evaluate the
 field weighed impact of the XSEDE publications, we can follow the same
 approach as was done using the ISI data to conduct a similar peer
 comparison study. Figure \ref{F:ms_peers_byj_mean} and Figure
@@ -746,7 +746,7 @@ management of the facility, for example, to provide useful information
 to the resource allocation committee during proposal selection and
 approval.  While the present study dealt exclusively with XSEDE data,
 the approaches and methods developed can be applied to evaluate
-publication data from avariety of different facilities or groups.  In
+publication data from a variety of different facilities or groups.  In
 fact we have done similar analyses for NCAR, BlueWaters, and Bridges
 using the developed methodology and software framework.
 
