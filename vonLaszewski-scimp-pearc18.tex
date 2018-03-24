@@ -140,8 +140,8 @@ To identify the impact of {\em scientific advancements enabled by
   enhanced cyberinfrastructure}, it is important to conduct a
 comprehensive analysis of achievements that can be attributed to the
 use of the advanced infrastructure, such as that provided by the
-Extreme Science and Discovery Environment (XSEDE)
-\cite{www-xsede,xsede}.
+Extreme Science and Discovery Environment
+(XSEDE)~\cite{www-xsede,xsede}.
 
 We use the bibliometrics approach to evaluate the scientific impact of
 XSEDE. By acquiring related publication and citation data from
@@ -164,44 +164,44 @@ evaluate the research impact of an individual, a research group, or
 even an organization. Publication count and citation count based
 metrics provide an effective way to show the quantity and quality, and
 the impact of scientific research activities. For instance, it was
-used to evaluate the quality of research in the United Kingdom
-\cite{thomas1998institutional, penfield2014assessment}. Most popular
-college/university rankings use citation based bibliometrics as an
-important factor to evaluate the quality of their research, e.g., the
-overall publication count and citation count in a certain year or a
-year range; the number of papers published in certain top journals;
-the number of highly cited papers; rating the citation count of a
-paper or its percentile ranking, etc.
+used to evaluate the quality of research in the United
+Kingdom~\cite{thomas1998institutional,penfield2014assessment}. Most
+popular college/university rankings use citation based bibliometrics
+as an important factor to evaluate the quality of their research,
+e.g., the overall publication count and citation count in a certain
+year or a year range; the number of papers published in certain top
+journals; the number of highly cited papers; rating the citation count
+of a paper or its percentile ranking, etc.
 
 Compute Canada, a virtual organization similar to XSEDE, also used a
-bibliometrics based analysis to evaluate the impact of their research
-\cite{www-computecanada}.
+bibliometrics based analysis to evaluate the impact of their
+research~\cite{www-computecanada}.
 
-Some previous work also studied the impact of TeraGrid \cite
-{bollen2011and}, the early version of XSEDE, by analyzing the
-publications for one specific reserach allocation quarter, which
-involved a very limited number of researchers and publications. Our
-work is unique in that it provides a {\em comprehensive} analysis
-superior in data volume, and with noval analyses approach such as
-Field Weighted Citation Impact and journal publication-based peers
-comparison.
+Some previous work also studied the impact of
+TeraGrid~\cite{bollen2011and}, the early version of XSEDE, by
+analyzing the publications for one specific reserach allocation
+quarter, which involved a very limited number of researchers and
+publications. Our work is unique in that it provides a {\em
+  comprehensive} analysis superior in data volume, and with noval
+analyses approach such as Field Weighted Citation Impact and journal
+publication-based peers comparison.
 
 In addition to the more intuitive direct metrics of publication and
-citation count, some other derivative metrics such as h-index
-\cite{hirsch2005index} and g-index \cite{egghe2006theory} combines
-both publication and citation count to generate one metric. I10-index
-\cite {www-i10index} in contrast measures only the count of those
-publications that received at least ten references by other
-publications.  In our evaluation we calculated such metrics for
+citation count, some other derivative metrics such as
+h-index~\cite{hirsch2005index} and g-index~\cite{egghe2006theory}
+combines both publication and citation count to generate one
+metric. I10-index~\cite {www-i10index} in contrast measures only the
+count of those publications that received at least ten references by
+other publications.  In our evaluation we calculated such metrics for
 various XSEDE research entities to show the impact and comparison of
 the entities on the same level, e.g., individual, project, research
 field of study, organization, etc. The results are presented on the
-XDMoD scintific impact portal \cite{www-xdmod-sciimp}.
+XDMoD scintific impact portal~\cite{www-xdmod-sciimp}.
 
 
-Usage based metrics\cite
-{Bollen:2007:MUM:1255175.1255273,Bollen:2008:TUI:1378889.1378928} have
-also been proposed, in which usage metrics, such as views and
+Usage based
+metrics~\cite{Bollen:2007:MUM:1255175.1255273,Bollen:2008:TUI:1378889.1378928}
+have also been proposed, in which usage metrics, such as views and
 downloads, instead of the more formal citations of publications are
 employed to evaluate scientific impact. However the applicability of
 this approach may be limited due to the fact that the usage data may
@@ -247,7 +247,7 @@ include:
 \subsection{Field Weighted Citation Impact Analysis}
 
 The field Weighted Citation Impact (FWCI) metric is proposed as one of
-the snowball metrics \cite{colledge2014snowball}. It calculates the
+the snowball metrics~\cite{colledge2014snowball}. It calculates the
 average citation count of a target group of publications based on
 their field of science, and then compare that with the average
 citation count of the whole field of science in the same time
@@ -298,14 +298,14 @@ We followed this process to obtain the data needed for the analysis.
 
 \begin{enumerate}
 \item We started this analysis by querying all XSEDE publications
-  against a third party data source - ISI Web of Knowledge
-  \cite{www-isiwos}. The XSEDE data, as explained before, contains the
-  publication entries extracted from past TeraGrid/XSEDE reports to
-  NSF, and the publication data from the XSEDE user portal. Both are
-  user-submitted data or compiled from user-submitted data, thus this
-  query and verification process ensures the quality and accuracy of
-  the dataset.  The final results were about 9 thousands verified
-  publications at the time of the study.
+  against a third party data source - ISI Web of
+  Knowledge~\cite{www-isiwos}. The XSEDE data, as explained before,
+  contains the publication entries extracted from past TeraGrid/XSEDE
+  reports to NSF, and the publication data from the XSEDE user
+  portal. Both are user-submitted data or compiled from user-submitted
+  data, thus this query and verification process ensures the quality
+  and accuracy of the dataset.  The final results were about 9
+  thousands verified publications at the time of the study.
 
 \item From this verified publications list, we find the subset of all
   the publication venues with at least 10 XSEDE publications. For each
@@ -405,15 +405,16 @@ components for:
 
 \item a presentation layer using a lightweight portal in addition to
   exposing some data via a RESTful API
-  \cite{Wang:2014:TSI:2616498.2616507}.
+  ~\cite{Wang:2014:TSI:2616498.2616507}.
 \end{itemize}
 
-Due to the use of the Software as a Service (SaaS) approach, our framework is
-expandable as we are able to integrate new services and data resources
-as required. Hence our framework can be adapted to other resource providers
-as demonstrated in \cite{tas2015}. Obviously, adaptation could mean
-that we simply have to change the bibliometric data, which could mean that
-we need to integrate new data sources and curation services.
+Due to the use of the Software as a Service (SaaS) approach, our
+framework is expandable as we are able to integrate new services and
+data resources as required. Hence our framework can be adapted to
+other resource providers as demonstrated in~\cite{tas2015}. Obviously,
+adaptation could mean that we simply have to change the bibliometric
+data, which could mean that we need to integrate new data sources and
+curation services.
 
 \subsubsection{Service Integration into XSEDE and XDMoD}
 
@@ -424,8 +425,8 @@ publication discovery service.
 
 The various impact metrics of different levels of XSEDE entities -
 person, project, organization, field of study - as well as part of the
-analyses are available on the XDMoD scientific impact portal
-\cite{www-xdmod-sciimp}.
+analyses are available on the XDMoD scientific impact
+portal~\cite{www-xdmod-sciimp}.
 
 \section{Results and Discussions} \label{S:result}
 
@@ -627,9 +628,9 @@ citations received by XSEDE and non-XSEDE peer publication groups.  We
 used several non-parametric statistical tests to decide whether the
 XSEDE and non-XSEDE population distributions are identical without
 assuming that they follow a normal distribution.  We used the
-Mann-Whitney-Wilcoxon test \cite{mann1947test}, Mood's median test
-\cite{brown1951median}, and Kruskal-Wallis test
-\cite{kruskal1952use}. The results are as the following.
+Mann-Whitney-Wilcoxon test~\cite{mann1947test}, Mood's median
+test~\cite{brown1951median}, and Kruskal-Wallis
+test~\cite{kruskal1952use}. The results are as the following.
 
 Wilcox test for citation count
 \begin{itemize}
