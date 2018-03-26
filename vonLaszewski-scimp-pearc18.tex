@@ -241,8 +241,9 @@ of Science Data. For all data we used the same time period between
 2005 and 2016, which is the same as for the XSEDE publications. We
 describe the basic features of the datasets next.
 
-\parindent 0pt \textbf{XSEDE publications} include those from
-TeraGrid. This data is collected from two sources. One is from the
+\parindent 0pt \textbf{XSEDE publications}. This dataset includes
+publications from XSEDE as well as from TeraGrid.
+This data is collected from two sources. One is from the
 user-submitted data from the XSEDE user portal; another is from the
 past TeraGrid/XSEDE project reports submitted to NSF. For the latter,
 we extracted the publications appendix from the reports and then
@@ -250,14 +251,15 @@ parsed and curated with significant effort the publication records
 text, before putting them into a structured database. There were over
 20 thousand raw entries.
 
-\parindent 0pt \textbf{Microsoft Academic Graph (MAG)} This dataset
+\parindent 0pt \textbf{Microsoft Academic Graph (MAG)}. This dataset
 was retrieved with the API provided by Microsoft. The data was then
 curated and cleaned and put into a MongoDB database. This dataset has
 about 58 million entries.
 
-\parindent 0pt \textbf{ISI Web of Science (WoS)} is used for the publication
-venues with at least 10 XSEDE papers appearing in them to facilitate
-the peers comparison study. This dataset has about 2 million entries.
+\parindent 0pt \textbf{ISI Web of Science (WoS)}. For the publication
+venues with at least 10 XSEDE papers appearing in them, we retrieved
+all the publications published in them
+to facilitate the peers comparison study. This dataset has about 2 million entries.
 
 \subsection{Field Weighted Citation Impact Analysis}
 
