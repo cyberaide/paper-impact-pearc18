@@ -382,35 +382,37 @@ To identify the FOS for each publication, we followed this process:
   FOS. In such cases we counted the publications of the project for
   all involved fields.
 
-\begin{enumerate}
+  \begin{enumerate}
 
-\item Some publications from the XSEDE quarterly reports were
-  identified only by the project proposal number. We mapped them to
-  the project charge number and account id used internally within the
-  XSEDE central database.
+  \item Some publications from the XSEDE quarterly reports were
+    identified only by the project proposal number. We mapped them to
+    the project charge number and account id used internally within
+    the XSEDE central database.
 
-\item For user uploaded publications data via the XSEDE user portal, a
-  project charge number was associated with each publication.
+  \item For user uploaded publications data via the XSEDE user portal,
+    a project charge number was associated with each publication.
 
-\item Identify from the charge number the FOS as defined in the XDcDB.
+  \item Identify from the charge number the FOS as defined in the
+    XDcDB.
 
-\end{enumerate}
+  \end{enumerate}
 
 \end{enumerate}
 
 \subsection{Software Architecture Supporting the Study}
 
-We have developed a software framework supporting the study, which
-includes data acquisition, cleanup, processing and presentation. The
-framework is based on a distributed set of software services. The
-service-oriented system is a layered architecture consisting of
-components for:
+We have developed a sophisticated software framework supporting the
+study, which includes data acquisition, cleanup, processing and
+presentation. The framework is based on a distributed set of software
+services. This service-oriented framework is integrated as part of a
+layered architecture consisting of components for:
 
 \begin{itemize}
 \item A data layer that retrieves publication and citation data from
   external sources.  This includes data from the ISI Web of Knowledge;
-  Microsoft Academic Graph; Google Scholar, and even the NSF award
-  database.
+  Microsoft Academic Graph; Google Scholar, and very importantly the
+  NSF award database.
+
 \item Business logic layer that deals with:
 
   \begin{itemize}
@@ -428,24 +430,25 @@ components for:
 \end{itemize}
 
 Due to the use of the Software as a Service (SaaS) approach, our
-framework is expandable as we are able to integrate new services and
-data resources as required. Hence our framework can be adapted to
-other resource providers as demonstrated in~\cite{tas2015}. Obviously,
-adaptation could mean that we simply have to change the bibliometric
-data, which could mean that we need to integrate new data sources and
-curation services.
+framework is \emph{expandable} as we are able to integrate new
+services and data resources as required. Hence our framework can be
+adapted to other resource providers as demonstrated
+in~\cite{tas2015}. Obviously, adaptation could mean that we have to
+change the bibliometric data, which could mean that we need to
+integrate new data sources and curation services spending significant
+effort to integrate such data.
 
 \subsubsection{Service Integration into XSEDE and XDMoD}
 
 Our current framework for XSEDE includes services that are motivated
 by our initial findings from the XSEDE bibliometric data. A RESTful
-service is integrated into the XSEDE User Portal as part of the
+service is integrated into the \emph{XSEDE User Portal} as part of the
 publication discovery service.
 
 The various impact metrics of different levels of XSEDE entities -
 person, project, organization, field of study - as well as part of the
-analyses are available on the XDMoD scientific impact
-portal~\cite{www-xdmod-sciimp}.
+analyses are available on the \emph{XDMoD scientific impact
+portal}~\cite{www-xdmod-sciimp}.
 
 \section{Results and Discussions} \label{S:result}
 
