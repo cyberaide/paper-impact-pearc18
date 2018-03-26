@@ -408,7 +408,8 @@ To identify the FOS for each publication, we followed this process:
 
 \subsection{Software Architecture Supporting the Study}
 
-We have developed a sophisticated software framework supporting the
+We enhanced our previously developed software framework
+~\cite{Wang:2014:TSI:2616498.2616507} to support the
 study, which includes data acquisition, cleanup, processing and
 presentation. The framework is based on a distributed set of software
 services. This service-oriented framework is integrated as part of a
@@ -416,7 +417,7 @@ layered architecture consisting of components for:
 
 \begin{itemize}
 \item A data layer that retrieves publication and citation data from
-  external sources.  This includes data from the ISI Web of Knowledge;
+  external sources. This includes data from the ISI Web of Science;
   Microsoft Academic Graph; Google Scholar, and very importantly the
   NSF award database.
 
@@ -433,7 +434,7 @@ layered architecture consisting of components for:
 
 \item a presentation layer using a lightweight portal in addition to
   exposing some data via a RESTful API
-  ~\cite{Wang:2014:TSI:2616498.2616507}.
+  ~\cite{www-xdmod-sciimp}.
 \end{itemize}
 
 Due to the use of the Software as a Service (SaaS) approach, our
