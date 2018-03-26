@@ -265,7 +265,7 @@ their field of science, and then compare that with the average
 citation count of the whole field of science in the same time
 period. The result is a ratio
 
-\[	fwci = avg(CC_{group})/avg(CC_{field}) \]
+\[ fwci = avg(CC_{group})/avg(CC_{field}) \]
 
 A fwci value greater than 1 indicates that the pertinent publication
 group had more citations than the expected value of the field of
@@ -281,7 +281,7 @@ values for the XSEDE publications.
   set, and verify the matching ones by checking other properties such
   as published year. After this process we have identified the
   verified matching records in the MAG for all valid XSEDE
-  publications.  During this process we enabled elastic-search to
+  publications.  During this process we enabled elasticsearch \cite{gormley2015elasticsearch} to
   improve both the accuracy and the performance of the query.  This is
   important because of the size of the dataset.
 \item For each of the 58 million MAG data, we use the assigned field
@@ -355,9 +355,9 @@ we identified as XSEDE papers and those that were not.
 
 To apply the percentile ranking to the field of science of XSEDE
 publications among the journal issues where each publication was
-published, we aggregate them based on FOS, based on the project field
+published, we aggregate them based on the project field
 of science data obtained from the XSEDE central database
-(XDcDB). These XSEDE fields of science are self reported by the
+(XDcDB). These XSEDE fields of science are self-reported by the
 researchers. We then calculated the average and median percentile rank
 for each field of science.
 
@@ -445,15 +445,15 @@ portal~\cite{www-xdmod-sciimp}.
 \subsection{Field Weighted Citation Impact Metrics}
 
 First we show the calculated FWCI values in Figure
-\ref{F:fwci_fwci}. The plot lists the FWCI for the top level fields of
+\ref{F:fwci_fwci}. The plot lists the FWCI for the top-level fields of
 science as defined from the MAG data.  Each data point also has the
 number of XSEDE publications as well as the number of all publications
 in that field. The red vertical line indicates the point at which
 FWCI=1. The figure shows all fields but one (political science, with
-only 3 publications ) had FWCI values greater than 1, with the
+only 3 publications) had FWCI values greater than 1, with the
 majority fields having much higher values.
 
-In Figure \ref{F:fwci_nxd} we display the same data but resorted based
+In Figure \ref{F:fwci_nxd} we display the same data but sorted based
 on the number of XSEDE publications in the field. This emphasizes the
 FWCI for the fields that the majority of the XSEDE publications fell
 within.
@@ -472,14 +472,17 @@ within.
 
 Figure \ref{F:FWCIwCC} compares the expected citation count based on
 all publications in a given field of science with the actual average
-citation count for XSEDE publications in each field of science. This
+citation count for XSEDE publications in each field of science, while
+including the FWCI values at the same time. The plot was sorted based
+on the the number of XSEDE publications in the field. This
 again indicates that XSEDE publications received much higher citation
 counts and implies a higher scientific impact than their non-XSEDE
 peers.
 
 In Figure \ref{F:FWCI_CC} we show the extra citations XSEDE
 publications receive for each field, compared to the expected overall
-field of science value.
+field of science value. The figure also indicates how much impact that access
+to XSEDE resources has on each individual field of science.
 
 \begin{figure}[htb!]
     \includegraphics[width=0.95\columnwidth]{images/FWCIwCC.pdf}
@@ -501,7 +504,7 @@ display for each field the highly cited XSEDE papers (defined as top
 how many XSEDE publications fall into each category. The results show
 that for most fields a higher than expected percentage of XSEDE
 publications fall into the highly cited papers categories. E.g., when
-we consider all the publications and fields together, 5\% XSEDE
+we consider all the publications and fields together, 4.8\% XSEDE
 publications were in the top 1\% highly cited group while 22.5\% were
 in the top 5\% highly cited group.
 
@@ -511,7 +514,7 @@ in the top 5\% highly cited group.
 \centering
  \begin{tabular}{||c c c c c c c||}
  \hline
-Field &	\# in top 1\% & \% in top 1\% & \# in top 5\% & \% in top 5\% & \# per 100,000 & \# XSEDE pubs \\ [0.5ex]
+Field &    \# in top 1\% & \% in top 1\% & \# in top 5\% & \% in top 5\% & \# per 100,000 & \# XSEDE pubs \\ [0.5ex]
  \hline\hline
 ALL & 727 & 4.8 & 3380 & 22.5 & 26.6 & 15042 \\
 \hline
@@ -582,17 +585,16 @@ When we aggregate the results by fields of study instead of by
 individual journal, we get the results shown in Figure
 \ref{F:isi_peers_fos}.
 
-These show that for majority of the publications venues, or fields of
-science, XSEDE publications have a higher percentile ranking based on
-citation count. This figure also indicates how much impact that access
-to XSEDE resources has on each individual field of science.
-
 \begin{figure*}[htb!]
   \centering
     \includegraphics[width=0.9\textwidth]{images/isi_peers_fos.pdf}
     \caption{Average percentile ranking of XD publications by Field of Study (by ISI)}
     \label{F:isi_peers_fos}
 \end{figure*}
+
+These plots show that for majority of the publications venues, or fields of
+science, XSEDE publications have a higher percentile ranking based on
+citation count.
 
 When we consider the overall comparison results, Figure
 \ref{F:ptranking_hist} shows the distribution of the XSEDE
@@ -636,8 +638,24 @@ of XSEDE publications' percentile ranking and that of peers'}
 \end{figure}
 
 Table \ref{T:groups_stats} lists the average and median rankings and
-citations received by XSEDE and non-XSEDE peer publication groups.  We
-used several non-parametric statistical tests to decide whether the
+citations received by XSEDE and non-XSEDE peer publication groups.
+
+\begin{table}[h!]
+\caption{Basic statistics of XSEDE publications group and peers group}
+\label{T:groups_stats}
+\centering
+\begin{small}
+\begin{tabular}{lrrrrrr}
+ & Number of & \multicolumn{2}{ c }{Rank} & \multicolumn{2}{ c }{Citations}  \\
+ &  Publications & Average & Median & Average & Median \\
+\hline
+  XD     & 5078            & 59   & 63   & 28   & 12 \\
+Peers & 356464 & 49   & 49   & 15   & 5 \\
+\end{tabular}
+\end{small}
+\end{table}
+
+We used several non-parametric statistical tests to decide whether the
 XSEDE and non-XSEDE population distributions are identical without
 assuming that they follow a normal distribution.  We used the
 Mann-Whitney-Wilcoxon test~\cite{mann1947test}, Mood's median
@@ -676,8 +694,10 @@ Kruskal-Wallis Test for percentile ranking
 
 All of these results strongly indicate that the differences that we
 see between the XSEDE and the non-XSEDE publication metrics are
-statistically significant.  We also performed a T-test to test if the
-citation differences were statistically significant. Even though the
+statistically significant.
+
+We also performed T-test to test the
+citation count differences and percentile rank differences. Even though the
 distribution of the citation count of the XSEDE publication group and
 the peers group are not necessarily normally distributed, due to the
 central limit theorem, when the sample size is large enough, it is
@@ -696,20 +716,6 @@ T-test for ranking (Welch Two sample t-test)
 \item T=25.412, df=5105.5, p-value<2.2e-16, 95\% confidence interval: $[9.07, 10.59]$
 \end{itemize}
 
-\begin{table}[h!]
-\caption{Basic statistics of XSEDE publications group and peers group}
-\label{T:groups_stats}
-\centering
-\begin{small}
-\begin{tabular}{lrrrrrr}
- & Number of & \multicolumn{2}{ c }{Rank} & \multicolumn{2}{ c }{Citations}  \\
- &  Publications & Average & Median & Average & Median \\
-\hline
-  XD     & 5078            & 59   & 63   & 28   & 12 \\
-Peers & 356464 & 49   & 49   & 15   & 5 \\
-\end{tabular}
-\end{small}
-\end{table}
 
 The results show that the XSEDE group has a statistically higher
 citation ranking and a statistically higher mean citation rate than
@@ -717,7 +723,7 @@ the non-XSEDE peer group.
 
 \subsubsection{Journal peer comparison based on MAG data}
 
-Although we first in-cooperated the MAG data in order to evaluate the
+Although we first integrated the MAG data in order to evaluate the
 field weighed impact of the XSEDE publications, we can follow the same
 approach as was done using the ISI data to conduct a similar peer
 comparison study. Figure \ref{F:ms_peers_byj_mean} and Figure
@@ -747,7 +753,7 @@ publications that were enabled by having access to the XSEDE
 resources. By curating the XSEDE publication data including cleansing,
 verifying and correlating the various data sources, we obtained a
 substantial valuable dataset with which to compare and evaluate the
-scientific impact of XSEDE itself.  While using two distinct analysis
+scientific impact of XSEDE itself.  While using two distinct analyses
 - Field Weighted Citation Impact analysis, and another novel journal
 publications-based peer comparison study, we found that XSEDE
 publications tend to be cited more than non-XSEDE publications.
@@ -762,9 +768,9 @@ publication data from a variety of different facilities or groups.  In
 fact we have done similar analyses for NCAR, BlueWaters, and Bridges
 using the developed methodology and software framework.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% Acknowledgment 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Acknowledgment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Acknowledgments}
 
@@ -773,13 +779,13 @@ by NSF under grant number OCI-1025159. Lessons learned from FutureGrid
 have significantly influenced this work. Gathering publications was
 first pioneered by FutureGrid, influencing the development in the XSEDE
 portal. We would like to thank Matt Hanlon and Maytal Dahan for their
-efforts to integrate this framework into the XSEDE portal.
+efforts to integrate part of the services into the XSEDE portal.
 
 
-\bibliographystyle{abbrvurl} 
-\bibliography{% 
+\bibliographystyle{abbrvurl}
+\bibliography{%
 bib/tas,%
-bib/vonlaszewski-new} 
+bib/vonlaszewski-new}
 
 
 \end{document}
@@ -788,8 +794,9 @@ bib/vonlaszewski-new}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% END END 
+% END END
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
