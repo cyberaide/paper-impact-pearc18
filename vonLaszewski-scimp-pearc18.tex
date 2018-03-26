@@ -492,10 +492,11 @@ again indicates that XSEDE publications received much higher citation
 counts and implies a higher scientific impact than their non-XSEDE
 peers.
 
-In Figure \ref{F:FWCI_CC} we show the extra citations XSEDE
+In Figure~\ref{F:FWCI_CC} we show the extra citations XSEDE
 publications receive for each field, compared to the expected overall
-field of science value. The figure also indicates how much impact that access
-to XSEDE resources has on each individual field of science.
+field of science value. Figure~\ref{F:FWCI_CC} also indicates how much
+impact that access to XSEDE resources has on each individual field of
+science.
 
 \begin{figure}[htb!]
     \includegraphics[width=0.95\columnwidth]{images/FWCIwCC.pdf}
@@ -597,8 +598,7 @@ same publication data but presents the median percentile rank values.
 \end{figure*}
 
 When we aggregate the results by fields of study instead of by
-individual journal, we get the results shown in Figure
-\ref{F:isi_peers_fos}.
+individual journal, we get the results shown in Figure~\ref{F:isi_peers_fos}.
 
 \begin{figure*}[htb!]
   \centering
@@ -611,8 +611,8 @@ These plots show that for majority of the publications venues, or fields of
 science, XSEDE publications have a higher percentile ranking based on
 citation count.
 
-When we consider the overall comparison results, Figure
-\ref{F:ptranking_hist} shows the distribution of the XSEDE
+When we consider the overall comparison results,
+Figure~\ref{F:ptranking_hist} shows the distribution of the XSEDE
 publication's percentile rank in each 10\% increment group. Values
 above 50\% indicate that the XSEDE publications are cited at a higher
 rate than their non-XSEDE peers.  Again the result show the
@@ -626,10 +626,10 @@ publications are cited more frequently than their non-XSEDE peers.
 \end{figure}
 
 Figure \ref{F:ptranking_cdf} shows the empirical cumulative
-distribution of the percentile ranks comparing to that of the peers
+distribution of the percentile ranks compared to that of the peers
 group. The XSEDE publication curve is entirely to the right of the
 overall publication curve which is another indication that the XSEDE
-publications have a higher impact.  Figure \ref{F:xd_peers_density}
+publications have a higher impact.  Figure~\ref{F:xd_peers_density}
 shows the kernel density of the distributions of XSEDE publications'
 percentile ranking and that of peers'. As expected, the non-XSEDE peer
 publications are evenly distributed by percentile ranks with the spike
@@ -711,16 +711,16 @@ All of these results strongly indicate that the differences that we
 see between the XSEDE and the non-XSEDE publication metrics are
 statistically significant.
 
-We also performed T-test to test the
-citation count differences and percentile rank differences. Even though the
-distribution of the citation count of the XSEDE publication group and
-the peers group are not necessarily normally distributed, due to the
-central limit theorem, when the sample size is large enough, it is
-rational to use the T-test to not only test if there is a statistical
-difference between the two groups, as having been shown by the several
-previous tests, but also to quantify the difference between the
-means. The t-test results for both citation count and percentile
-ranking are given below.
+We also performed a T-test to test the citation count differences and
+percentile rank differences. Even though the distribution of the
+citation count of the XSEDE publication group and the peers group are
+not necessarily normally distributed, due to the central limit
+theorem, when the sample size is large enough, it is rational to use
+the T-test to not only test if there is a statistical difference
+between the two groups, as having been shown by the several previous
+tests, but also to quantify the difference between the means. The
+t-test results for both citation count and percentile ranking are
+given below.
 
 \begin{itemize}
 \item T=9.8328, df=5105.5, p-value< 2.2e-16, 95\% confidence interval: $[10.90, 16.32]$
@@ -740,12 +740,12 @@ the non-XSEDE peer group.
 
 Although we first integrated the MAG data in order to evaluate the
 field weighed impact of the XSEDE publications, we can follow the same
-approach as was done using the ISI data to conduct a similar peer
+approach as was done using the WoS data to conduct a similar peer
 comparison study. Figure \ref{F:ms_peers_byj_mean} and Figure
 \ref{F:ms_peers_byj_median} show the average and median percentile
 ranking for XSEDE publications by each journal using MAG data. The
 overall results are pretty similar to what we got from the study with
-the ISI data.
+the WoS data.
 
 \begin{figure*}[htb!]
   \centering
@@ -767,10 +767,10 @@ We evaluated the scientific impact of XSEDE by examining the
 publications that were enabled by having access to the XSEDE
 resources. By curating the XSEDE publication data including cleansing,
 verifying and correlating the various data sources, we obtained a
-substantial valuable dataset with which to compare and evaluate the
-scientific impact of XSEDE itself.  While using two distinct analyses
-- Field Weighted Citation Impact analysis, and another novel journal
-publications-based peer comparison study, we found that XSEDE
+substantial very valuable dataset with which to compare and evaluate
+the scientific impact of XSEDE itself.  While using two distinct
+analyses - \emph{Field Weighted Citation Impact} analysis, and another novel
+\emph{Journal Publications-based Peer Comparison} study, we found that XSEDE
 publications tend to be cited more than non-XSEDE publications.
 Various statistical tests show the results are statistically
 significant.  The results from this study could potentially be used to
