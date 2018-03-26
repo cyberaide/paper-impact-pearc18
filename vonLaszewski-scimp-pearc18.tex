@@ -229,33 +229,34 @@ analysis to evaluate the scientific impact of XSEDE publications. This
 includes the specification of the dataset and data sources used in the
 analysis, the approaches to define and calculate the various metrics,
 and the information about the sophisticated software and service
-framework developed to facilitate this comprehnsive evaluation study.
+framework developed to facilitate this to XSEDE unique and
+comprehensive evaluation study.
 
 \subsection{Dataset and data sources}
 
-Several data sets and sources are involved in this study which include
-XSEDE publications,  Microsoft Academic Graph (MAG), and 
-listing next.
+Several data sets and sources are involved in this study which
+includes XSEDE publications, Microsoft Academic Graph (MAG), and Web
+of Science Data. For all data we used the same time period between
+2005 and 2016, which is the same as for the XSEDE publications.  We
+describe the basic features of the datasets next.
 
 \parindent 0pt \textbf{XSEDE publications} include those from
 TeraGrid. This data is collected from two sources. One is from the
 user-submitted data from the XSEDE user portal; another is from the
 past TeraGrid/XSEDE project reports submitted to NSF. For the latter,
 we extracted the publications appendix from the reports and then
-parsed the publication records text before putting them into a
-structured database. There were over twenty thousand raw entries.
+parsed and curated with significant effort the publication records
+text, before putting them into a structured database. There were over
+20 thousand raw entries.
 
-\parindent 0pt \textbf{Microsoft Academic Graph (MAG)} data during the
-same time period (2005 - 2016) as the XSEDE publications. This dataset
-was retrieved with the API provided by Microsoft. The data were then
-cleaned up and put into a MongoDB database. This dataset has about 58
-million entries.
+\parindent 0pt \textbf{Microsoft Academic Graph (MAG)} This dataset
+was retrieved with the API provided by Microsoft. The data was then
+curated and cleaned and put into a MongoDB database. This dataset has
+about 58 million entries.
 
-\parindent 0pt \textbf{ISI Web of Knowledge}. For the publication
-venues with at least 10 XSEDE papers appearing in them, we retrieved
-all the publications from the same time period (2005 - 2016) to
-facilitate the peers comparison study. This dataset has about 2
-million entries.
+\parindent 0pt \textbf{ISI Web of Science} is used for the publication
+venues with at least 10 XSEDE papers appearing in them to facilitate
+the peers comparison study. This dataset has about 2 million entries.
 
 \subsection{Field Weighted Citation Impact Analysis}
 
