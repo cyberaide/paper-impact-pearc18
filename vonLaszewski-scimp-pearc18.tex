@@ -293,14 +293,14 @@ values for the XSEDE publications.
   trace upward to the top levels of the hierarchical fields. This
   process narrowed down the ~30k different assigned fields of study to
   19 overall top level \emp{fields of study} as defined in the MAG
-  dataset.  One thing to note is that each publication is assigned
-  to multiple science fields in the original publication records, and
-  the final top level science field category of a publication may not
-  be unique either. However as a lot of research publications are
+  dataset.  One thing to note is that each publication is assigned to
+  multiple science fields in the original publication records, and the
+  final top level science field category of a publication may not be
+  unique either. However as a lot of research publications are
   themselves multi-disciplinary we think that such results are valid
   and acceptable. In the following analysis we counted a publication
-  in all the top level science fields we found following this\footnote{our} tracing
-  process.
+  in all the top level science fields we found following
+  this\footnote{our} tracing process.
 \item Once we have each and every publications in the MAG dataset, we
   can calculate the average citation count by each top level field,
   for all the MAG publications and XSEDE publications
@@ -310,49 +310,52 @@ values for the XSEDE publications.
 
 \subsection{Metric for Journal Publication-based Peer Comparison} \label{S:metric}
 
-We followed this process to obtain the data needed for the analysis.
+An importnat achievement is our novel and sophisticated \emph{Journal
+  Publication-based Peer Comparison (JPPC)} metric as discussed in
+\cite{tas2015}. We used the following process to obtain the data
+needed for the analysis.
 
 \begin{enumerate}
-\item We started this analysis by querying all XSEDE publications
-  against a third party data source - ISI Web of
-  Knowledge~\cite{www-isiwos}. The XSEDE data, as explained before,
-  contains the publication entries extracted from past TeraGrid/XSEDE
-  reports to NSF, and the publication data from the XSEDE user
-  portal. Both are user-submitted data or compiled from user-submitted
-  data, thus this query and verification process ensures the quality
-  and accuracy of the dataset.  The final results were about nine
-  thousand verified publications at the time of the study.
+\item We start this analysis by querying all XSEDE publications
+  against a third party data source - WoS~\cite{www-isiwos}. The XSEDE
+  data, as explained before, contains the publication entries
+  extracted from past TeraGrid/XSEDE reports to NSF, and the
+  publication data from the XSEDE user portal. Both are user-submitted
+  data or compiled from user-submitted data, thus this query and
+  verification process is needed to ensure the quality and accuracy of
+  the dataset.  This resulted in about nine thousand verified
+  publications at the time of the study.
 
 \item From this verified publications list, we find the subset of all
-  the publication venues with at least 10 XSEDE publications. For each
-  of the publications published in these venues we retrieve from ISI
-  Web of Knowledge the extended metadata to get the exact volume and
-  issue number of the publication venue where the publication was
-  published. The reasons why we chose a threshold value of 10 to
-  identify a publication venue subset are:
-\begin{enumerate}
-\item This ensures the statistical significance of the analysis
-  results.
-\item This eases the data retrieval work substantially. While we have
-  ~1400 distinct publication venues identified from all the verified
-  XSEDE publications, the subset when we use 10 as the minimum number
-  of publications appearing in the venue was reduced to ~120
-  publication venues.
-\item Using this criterion, the number of XSEDE publications in the
-  peers comparison was about five thousand, or about 56\% of all the
-  verified ones. This represents a good portion of all the data.
-\end{enumerate}
+  publication venues with at least 10 XSEDE publications. For each of
+  the publications published in these venues we retrieve from WoS the
+  extended metadata to get the exact volume and issue number of the
+  publication venue. The reasons why we chose a threshold value of 10
+  to identify a publication venue subset are:
 
-\item For all the ~120 publication venues, we retrieved all the
+  \begin{enumerate}
+  \item This ensures the statistical significance of the analysis
+    results.
+  \item This eases the data retrieval work substantially. While we
+    have \verb|~|1400 distinct publication venues identified from all the
+    verified XSEDE publications, the subset when we use 10 as the
+    minimum number of publications appearing in the venue was reduced
+    to \verb|~|120 publication venues.
+  \item Using this criterion, the number of XSEDE publications in the
+    peers comparison was about five thousand, or about 56\% of all the
+    verified ones. This represents a good portion of all the data.
+  \end{enumerate}
+
+\item For all \verb|~|120 publication venues, we retrieved all the
   publications data published in them during the same time period as
-  the TeraGrid/XSEDE publications (2005~2016).
+  the TeraGrid/XSEDE publications (2005-2016).
 \end{enumerate}
 
-Based on these data, we can form suitable comparison peers groups,
-which are each single journal issue (or journal volume when no issue
-data available for some publications) that an XSEDE publication
-appeared in. For each comparison peers group, we rank the citation
-count of each publication (including the XSEDE ones and the
+Based on this data, we can establish suitable comparison peer groups,
+which are based each on a single journal issue (or journal volume when
+no issue data available for some publications) that an XSEDE
+publication appeared in. For each comparison peer group, we rank the
+citation count of each publication (including the XSEDE ones and the
 peers). The calculated percentile ranking values serve as the basis of
 the peer comparison study. The comparison is between publications that
 we identified as XSEDE papers and those that were not.
@@ -362,8 +365,8 @@ publications among the journal issues where each publication was
 published, we aggregate them based on the project field
 of science data obtained from the XSEDE central database
 (XDcDB). These XSEDE fields of science are self-reported by the
-researchers. We then calculated the average and median percentile rank
-for each field of science.
+researchers. We then calculate the average and median percentile rank
+for each field of science (FOS).
 
 To identify the FOS for each publication, we followed this process:
 
