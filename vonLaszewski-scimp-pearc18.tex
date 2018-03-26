@@ -115,21 +115,21 @@ Steven M. Gallo\\
 
 \begin{abstract}
 
-  In this paper we use the bibliometrics approach to evaluate the
-  scientific impact of XSEDE.  By utilizing publication data from
-  various sources, e.g., ISI Web of Science and Microsoft Academic
-  Graph, we calculate the impact metrics of XSEDE publications and
-  show how they compare with non-XSEDE publication from the same field
-  of study, or non-XSEDE "peers" from the same journal issue. We
-  explain in detail how we retrieved, cleaned up, and curated millions
-  of related publication entries.  We then introduce the metrics we
-  used for evaluation and comparison, and the methods used to
-  calculate them. Detailed analysis results of Field Weighted Citation
-  Impact (FWCI) and the peers comparison will be presented and
-  discussed. We also explain briefly how the same approaches could be
-  used to evaluate publications from a similar organization or
-  institute, to demonstrate the general applicability of the present
-  evaluation approach.
+  We use the bibliometrics approach to evaluate the scientific impact of
+  XSEDE.  By utilizing publication data from various sources, e.g.,
+  ISI Web of Science and Microsoft Academic Graph, we calculate the
+  impact metrics of XSEDE publications and show how they compare with
+  non-XSEDE publication from the same field of study, or non-XSEDE
+  \emph{peers} from the same journal issue. We explain in detail how
+  we retrieved, cleaned, and curated millions of related publication
+  entries.  We then introduce the metrics we used for evaluation and
+  comparison, and the methods used to calculate them. Detailed
+  analysis results of Field Weighted Citation Impact (FWCI) and the
+  peers comparison will be presented and discussed. We also explain
+  how the same approaches could be used to evaluate publications from
+  a similar organization or institute, to demonstrate the general
+  applicability of the present evaluation approach providing impact
+  even beyond XSEDE.
 
 
 \end{abstract}
@@ -163,7 +163,7 @@ were published in the same journals, or in the same field of study. By
 processing millions of publication data entries we normalized the
 citation count by field of study. This essentially eliminates the
 problem that different fields of study have different publication
-characteristics. We also introduced a novel method to compare the
+characteristics. We introduced a novel \cite{??} method to compare the
 target publications group with their peers published in the same
 publication venue to further show how the target publications group
 performs compared to their peers within the same publication venue.
@@ -185,11 +185,11 @@ year or a year range; the number of papers published in certain top
 journals; the number of highly cited papers; rating the citation count
 of a paper or its percentile ranking, etc.
 
-Compute Canada, a virtual organization similar to XSEDE, also used a
+Compute Canada, a virtual organization similar to XSEDE, also uses a
 bibliometrics based analysis to evaluate the impact of their
 research~\cite{www-computecanada}.
 
-Some previous work also studied the impact of
+Some previous limited work studied the impact of
 TeraGrid~\cite{bollen2011and}, the early version of XSEDE, by
 analyzing the publications for one specific research allocation
 quarter, which involved a very limited number of researchers and
@@ -213,15 +213,14 @@ XDMoD scientific impact portal~\cite{www-xdmod-sciimp}.
 
 Usage based
 metrics~\cite{Bollen:2007:MUM:1255175.1255273,Bollen:2008:TUI:1378889.1378928}
-have also been proposed, in which usage metrics, such as views and
-downloads, instead of the more formal citations of publications are
-employed to evaluate scientific impact. However the applicability of
-this approach may be limited due to the fact that the usage data may
-not be available from a publisher, or different publishers may have
-different criteria to measure the usage data thus created an
-inconsistent comparison base for papers published in different
-publishers.  For this reason we did not use such metrics in the
-present study.
+have also been proposed including metrics such as views and downloads,
+instead of the more formal citations of publications. However the
+applicability of this approach may be limited because the usage data
+may not be available from a publisher, or different publishers may
+have different criteria to measure the usage data. Thus, it would
+create an inconsistent comparison for papers published by different
+publishers.  For this reason we did not present such metrics in this
+paper.
 
 \section{Methodology} \label{S:methodology}
 
