@@ -1,3 +1,4 @@
+\RequirePackage[hyphens]{url}
 \documentclass{sig-alternate}
 
 \hyphenation{data-bases}
@@ -163,7 +164,7 @@ were published in the same journals, or in the same field of study. By
 processing millions of publication data entries we normalized the
 citation count by field of study. This essentially eliminates the
 problem that different fields of study have different publication
-characteristics. We introduced a novel \cite{??} method to compare the
+characteristics. We introduced a novel \cite{tas2015} method to compare the
 target publications group with their peers published in the same
 publication venue to further show how the target publications group
 performs compared to their peers within the same publication venue.
@@ -237,7 +238,7 @@ comprehensive evaluation study.
 Several data sets and sources are involved in this study which
 includes XSEDE publications, Microsoft Academic Graph (MAG), and Web
 of Science Data. For all data we used the same time period between
-2005 and 2016, which is the same as for the XSEDE publications.  We
+2005 and 2016, which is the same as for the XSEDE publications. We
 describe the basic features of the datasets next.
 
 \parindent 0pt \textbf{XSEDE publications} include those from
@@ -254,7 +255,7 @@ was retrieved with the API provided by Microsoft. The data was then
 curated and cleaned and put into a MongoDB database. This dataset has
 about 58 million entries.
 
-\parindent 0pt \textbf{ISI Web of Science} is used for the publication
+\parindent 0pt \textbf{ISI Web of Science (WoS)} is used for the publication
 venues with at least 10 XSEDE papers appearing in them to facilitate
 the peers comparison study. This dataset has about 2 million entries.
 
@@ -267,37 +268,38 @@ their field of science, and then compare that with the average
 citation count of the whole field of science in the same time
 period. The result is a ratio
 
-\[ fwci = avg(CC_{group})/avg(CC_{field}) \]
+\[ FWCI = avg(CC_{group})/avg(CC_{field}) \]
 
-A fwci value greater than 1 indicates that the pertinent publication
-group had more citations than the expected value of the field of
-science, while a value less than 1 indicates that the average citation
-count that the group received was less than the expected value for the
-applicable field of science.
+A \emph{FWCI} value greater than 1 indicates that the pertinent
+publication group had more citations than the expected value of the
+field of science, while a value less than 1 indicates that the average
+citation count that the group received was less than the expected
+value for the applicable field of science.
 
-In this study we introduced the following process to calculate the FWCI
+In this study we introduced the following process to calculate the \emph{FWCI}
 values for the XSEDE publications.
 
 \begin{enumerate}
 \item Query every raw XSEDE publication by title against the MAG data
   set, and verify the matching ones by checking other properties such
-  as published year. After this process we have identified the
-  verified matching records in the MAG for all valid XSEDE
-  publications.  During this process we enabled elasticsearch \cite{gormley2015elasticsearch} to
-  improve both the accuracy and the performance of the query.  This is
-  important because of the size of the dataset.
-\item For each of the 58 million MAG data, we use the assigned field
-  of study values, along with other related data form MAG, to trace
-  upward to the top levels of the hierarchical fields. This process
-  narrowed down the ~30k different assigned fields of study to 19
-  overall top level fields of study as defined in the MAG dataset.
-  One thing to note was that each publication was assigned to multiple
-  science fields in the original publication records, and the final
-  top level science field category of a publication may not be unique
-  either. However as a lot of research publications are themselves
-  multi-disciplinary we think that such results are valid and
-  acceptable. In the following analysis we counted a publication in
-  all the top level science fields we found following the tracing
+  as published year. After this process we identify the verified
+  matching records in the MAG for all valid XSEDE publications.
+  During this process we use elasticsearch
+  \cite{gormley2015elasticsearch} to improve both the accuracy and the
+  performance of the query.  This is important because of the size of
+  the dataset.
+\item For each of the 58 million MAG data records, we use the assigned
+  field of study values, along with other related data form MAG, to
+  trace upward to the top levels of the hierarchical fields. This
+  process narrowed down the ~30k different assigned fields of study to
+  19 overall top level \emp{fields of study} as defined in the MAG
+  dataset.  One thing to note is that each publication is assigned
+  to multiple science fields in the original publication records, and
+  the final top level science field category of a publication may not
+  be unique either. However as a lot of research publications are
+  themselves multi-disciplinary we think that such results are valid
+  and acceptable. In the following analysis we counted a publication
+  in all the top level science fields we found following this\footnote{our} tracing
   process.
 \item Once we have each and every publications in the MAG dataset, we
   can calculate the average citation count by each top level field,
@@ -514,6 +516,7 @@ in the top 5\% highly cited group.
 \caption{Highly Cited Papers Statistics (in top 1\% and 5\%)}
 \label{T:field_highly_cited}
 \centering
+\resizebox{0.75\textwidth}{!}{%
  \begin{tabular}{||c c c c c c c||}
  \hline
 Field &    \# in top 1\% & \% in top 1\% & \# in top 5\% & \% in top 5\% & \# per 100,000 & \# XSEDE pubs \\ [0.5ex]
@@ -559,6 +562,7 @@ business & 1 & 5.3 & 6 & 31.6 & 1.1 & 19 \\
 political science & 0 & 0.0 & 0 & 0.0 & 0.2 & 3 \\ [1ex]
  \hline
 \end{tabular}
+}
 \end{table*}
 
 \subsection{XSEDE Peer Data Analysis} \label{S:xsede}
@@ -607,7 +611,7 @@ distribution skewed to the higher end, which means that XSEDE
 publications are cited more frequently than their non-XSEDE peers.
 
 \begin{figure}[htb!]
-    \includegraphics[width=0.95\columnwidth]{images/ptranking_histogram.pdf}
+    \includegraphics[width=0.80\columnwidth]{images/ptranking_histogram.pdf}
     \caption{Histogram of Percentile Ranking}
     \label{F:ptranking_hist}
 \end{figure}
@@ -627,13 +631,13 @@ that XSEDE publications tend to be more highly cited compared to their
 peers published in the same journal issue.
 
 \begin{figure}[htb!]
-    \includegraphics[width=0.95\columnwidth]{images/ptranking_CDF.pdf}
+    \includegraphics[width=0.80\columnwidth]{images/ptranking_CDF.pdf}
     \caption{Empirical Cumulative Distribution of Percentile Ranks}
     \label{F:ptranking_cdf}
 \end{figure}
 
 \begin{figure}[htb!]
-    \includegraphics[width=0.95\columnwidth]{images/ptranking_distribution.pdf}
+    \includegraphics[width=0.80\columnwidth]{images/ptranking_distribution.pdf}
     \caption{Kernel Density of the distributions
 of XSEDE publications' percentile ranking and that of peers'}
     \label{F:xd_peers_density}
@@ -646,7 +650,7 @@ citations received by XSEDE and non-XSEDE peer publication groups.
 \caption{Basic statistics of XSEDE publications group and peers group}
 \label{T:groups_stats}
 \centering
-\begin{small}
+\resizebox{0.8\columnwidth}{!}{%
 \begin{tabular}{lrrrrrr}
  & Number of & \multicolumn{2}{ c }{Rank} & \multicolumn{2}{ c }{Citations}  \\
  &  Publications & Average & Median & Average & Median \\
@@ -654,7 +658,7 @@ citations received by XSEDE and non-XSEDE peer publication groups.
   XD     & 5078            & 59   & 63   & 28   & 12 \\
 Peers & 356464 & 49   & 49   & 15   & 5 \\
 \end{tabular}
-\end{small}
+}
 \end{table}
 
 We used several non-parametric statistical tests to decide whether the
