@@ -1,5 +1,6 @@
 \RequirePackage[hyphens]{url}
-\documentclass{sig-alternate}
+%\documentclass{sig-alternate}
+\documentclass[sigconf]{acmart}
 
 \hyphenation{data-bases}
 
@@ -68,60 +69,86 @@
 
 \begin{document}
 
+\copyrightyear{2018}
+\acmYear{2018}
+\setcopyright{acmcopyright}
+\acmConference[PEARC '18]{Practice and Experience in Advanced Research Computing}{July 22--26, 2018}{Pittsburgh, PA, USA}
+\acmBooktitle{PEARC '18: Practice and Experience in Advanced Research Computing, July 22--26, 2018, Pittsburgh, PA, USA}
+\acmPrice{15.00}
+\acmDOI{10.1145/3219104.3219124}
+\acmISBN{978-1-4503-6446-1/18/07}
 
-\conferenceinfo{PEARC18 ...}{2018,USA}
-\CopyrightYear{2018} 
-\crdata{TBD...\$15.00.\\
-http://dx.doi.org/TBD
-} 
+%\title{\TITLE\vspace{-12pt}}
+\title{\TITLE}
 
-\title{\TITLE\vspace{-12pt}}
-
-\numberofauthors{6}  
-\author{ 
-\alignauthor 
-Fugang Wang\\
-       \affaddr{Indiana University}\\ 
-       \affaddr{Bloomington, Indiana, U.S.A.}\\ 
-\alignauthor
-Gregor von Laszewski\titlenote{Corresponding Author.}\\
-       \affaddr{Indiana University}\\ 
-       \affaddr{Bloomington, Indiana, U.S.A.}\\ 
-       \email{laszewski@gmail.com}
-\alignauthor
-Timothy Whitson\\
-       \affaddr{Indiana University}\\ 
-       \affaddr{Bloomington, Indiana, U.S.A.}\\ 
-\and
-\alignauthor
-Geoffrey C. Fox\\
-       \affaddr{Indiana University}\\ 
-       \affaddr{Bloomington, Indiana, U.S.A.}\\ 
-\alignauthor  
-Thomas R. Furlani\\
-       \affaddr{Center for Computational Research}\\
-       \affaddr{University at Buffalo, SUNY}\\ 
-       \affaddr{701 Ellicott Street}\\ 
-       \affaddr{Buffalo, New York, 14203}
-\alignauthor  
-Robert L. DeLeon\\
-Steven M. Gallo\\
-       \affaddr{University at Buffalo, SUNY}\\ 
-       \affaddr{Buffalo, New York, 14203}
+\author{Fugang Wang}
+\affiliation{%
+  \institution{Indiana University}
+  \city{Bloomington}
+  \state{Indiana}
 }
 
-\date{July 2018}
+\author{Gregor von Laszewski}
+\authornote{Corresponding Author.}
+\affiliation{%
+  \institution{Indiana University}
+  \city{Bloomington}
+  \state{Indiana}
+}
+\email{laszewski@gmail.com}
 
-\maketitle
+\author{Timothy Whitson}
+\affiliation{%
+  \institution{Indiana University}
+  \city{Bloomington}
+  \state{Indiana}
+}
+
+\author{Geoffrey C. Fox}
+\affiliation{%
+  \institution{Indiana University}
+  \city{Bloomington}
+  \state{Indiana}
+}
+
+\author{Thomas R. Furlani}
+\affiliation{%
+  \institution{Center for Computational Research, University at Buffalo, SUNY}
+  \streetaddress{701 Ellicott Street}
+  \city{Buffalo}
+  \state{New York}
+  \postcode{14203}
+}
+
+\author{Robert L. DeLeon}
+\affiliation{%
+  \institution{Center for Computational Research, University at Buffalo, SUNY}
+  \streetaddress{701 Ellicott Street}
+  \city{Buffalo}
+  \state{New York}
+  \postcode{14203}
+}
+
+\author{Steven M. Gallo}
+\affiliation{%
+  \institution{Center for Computational Research, University at Buffalo, SUNY}
+  \streetaddress{701 Ellicott Street}
+  \city{Buffalo}
+  \state{New York}
+  \postcode{14203}
+}
+
+\renewcommand{\shortauthors}{F. Wang et al.}
 
 \begin{abstract}
 
   We use the bibliometrics approach to evaluate the scientific impact of
-  XSEDE.  By utilizing publication data from various sources, e.g.,
+  XSEDE. By utilizing publication data from various sources, e.g.,
   ISI Web of Science and Microsoft Academic Graph, we calculate the
   impact metrics of XSEDE publications and show how they compare with
   non-XSEDE publication from the same field of study, or non-XSEDE
-  \emph{peers} from the same journal issue. We explain in detail how
+  \emph{peers} from the same journal issue. We explain the dataset and
+  data soruces involved and how
   we retrieved, cleaned, and curated millions of related publication
   entries.  We then introduce the metrics we used for evaluation and
   comparison, and the methods used to calculate them. Detailed
@@ -132,20 +159,40 @@ Steven M. Gallo\\
   applicability of the present evaluation approach providing impact
   even beyond XSEDE.
 
-
 \end{abstract}
 
+\begin{CCSXML}
+<ccs2012>
+ <concept>
+  <concept_id>0.10002951.10003227</concept_id>
+  <concept_desc>Information systems~Information systems applications</concept_desc>
+  <concept_significance>500</concept_significance>
+ </concept>
+ <concept>
+  <concept_id>0.10002951.10003317</concept_id>
+  <concept_desc>Information systems~Information retrieval</concept_desc>
+  <concept_significance>300</concept_significance>
+ </concept>
+ <concept>
+  <concept_id>0.10002951.10002952.10003219</concept_id>
+  <concept_desc>Information systems~Data management systems~Information integration</concept_desc>
+  <concept_significance>200</concept_significance>
+ </concept>
+</ccs2012>
+\end{CCSXML}
 
-\vspace{-6pt}
 
-\category{H.4}{Information Systems Applications}{Miscellaneous}
-\category{D.2.8}{Software Engineering}{Metrics}[complexity measures,
-performance measures]
+\ccsdesc[500]{Information systems~Information systems applications}
+\ccsdesc[300]{Information systems~Information retrieval}
+\ccsdesc[200]{Information systems~Data management systems~Information integration}
 
-\terms{Theory, Measurement}
+%\ccsdesc[H.4]{Information Systems Applications~Miscellaneous}
+%\ccsdesc[D.2.8]{Software Engineering~Metrics~performance measures}
 
 \keywords{Scientific impact, bibliometrics, h-index, Technology Audit
   Service, XDMoD, XSEDE}
+
+\maketitle
 
 \section{Introduction} 
 
@@ -231,8 +278,8 @@ analysis to evaluate the scientific impact of XSEDE publications. This
 includes the specification of the dataset and data sources used in the
 analysis, the approaches to define and calculate the various metrics,
 and the information about the sophisticated software and service
-framework developed to facilitate this to XSEDE unique and
-comprehensive evaluation study.
+framework developed to facilitate this unique and
+comprehensive evaluation study on XSEDE.
 
 \subsection{Dataset and data sources}
 
@@ -493,10 +540,10 @@ within.
     \label{F:fwci_nxd}
 \end{figure}
 
-Figure \ref{F:FWCIwCC} compares the expected citation count based on
+Figure \ref{F:FWCIwCC} compares the expected citation count (denoted by mean\_all) based on
 all publications in a given field of science with the actual average
-citation count for XSEDE publications in each field of science, while
-including the FWCI values at the same time. The plot was sorted based
+citation count (denoted by mean\_xd) for XSEDE publications in each field of science, while
+including the FWCI values at the same time (line chart with dots). The plot was sorted based
 on the number of XSEDE publications in the field. This
 again indicates that XSEDE publications received much higher citation
 counts and implies a higher scientific impact than their non-XSEDE
@@ -633,7 +680,7 @@ publications are cited more frequently than their non-XSEDE peers.
 
 \begin{figure}[htb!]
     \centering
-    \includegraphics[width=0.80\columnwidth]{images/ptranking_histogram.pdf}
+    \includegraphics[width=0.90\columnwidth]{images/ptranking_histogram.pdf}
     \caption{Histogram of Percentile Ranking}
     \label{F:ptranking_hist}
 \end{figure}
@@ -654,14 +701,14 @@ peers published in the same journal issue.
 
 \begin{figure}[htb!]
     \centering
-    \includegraphics[width=0.80\columnwidth]{images/ptranking_CDF.pdf}
+    \includegraphics[width=0.90\columnwidth]{images/ptranking_CDF.pdf}
     \caption{Empirical Cumulative Distribution of Percentile Ranks}
     \label{F:ptranking_cdf}
 \end{figure}
 
 \begin{figure}[htb!]
     \centering
-    \includegraphics[width=0.80\columnwidth]{images/ptranking_distribution.pdf}
+    \includegraphics[width=0.90\columnwidth]{images/ptranking_distribution.pdf}
     \caption{Kernel Density of the distributions
 of XSEDE publications' percentile ranking and that of peers'}
     \label{F:xd_peers_density}
@@ -737,6 +784,7 @@ tests, but also to quantify the difference between the means. The
 t-test results for both citation count and percentile ranking are
 given below.
 
+T-test for citation count (Welch Two sample t-test)
 \begin{itemize}
 \item T=9.8328, df=5105.5, p-value< 2.2e-16, 95\% confidence interval: $[10.90, 16.32]$
 \end{itemize}
