@@ -1,11 +1,12 @@
-\RequirePackage[hyphens]{url}
-%\documentclass{sig-alternate}
+% \RequirePackage[hyphens]{url}
 \documentclass[sigconf]{acmart}
 
 \hyphenation{data-bases}
 
 \newcommand{\TITLE}{Evaluating the Scientific Impact of XSEDE}
-\newcommand{\AUTHOR}{Fugang Wang, Gregor von Laszewski}
+\newcommand{\AUTHOR}{Fugang Wang, Gregor von Laszewski, Timothy
+  Whitson, Geoffrey C. Fox, Thomas R. Furlani, Robert L. DeLeon, 
+  Steven M. Gallo}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % LATEX DEFINITIONS 
@@ -16,58 +17,8 @@
 \usepackage{hyperref} 
 \usepackage{array} 
 \usepackage{graphicx} 
-\usepackage{booktabs} 
-\usepackage{pifont} 
-\usepackage{todonotes} 
-\usepackage{rotating} 
-\usepackage{color} 
-\usepackage{caption}
-\captionsetup{font={scriptsize}}
 
-\newcommand*\rot{\rotatebox{90}} 
 
-\newcommand{\FILE}[1]{\todo[color=green!40]{#1}} 
-
-%
-% more floats on one page
-%
-\renewcommand{\topfraction}{.85}
-\renewcommand{\bottomfraction}{.7}
-\renewcommand{\textfraction}{.15}
-\renewcommand{\floatpagefraction}{.66}
-\renewcommand{\dbltopfraction}{.66}
-\renewcommand{\dblfloatpagefraction}{.66}
-\setcounter{topnumber}{9}
-\setcounter{bottomnumber}{9}
-\setcounter{totalnumber}{20}
-\setcounter{dbltopnumber}{9}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% HYPERSETUP 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\hypersetup{ 
-    bookmarks=true,         % show bookmarks bar 
-    unicode=false,          % non-Latin characters in Acrobat's bookmarks 
-    pdftoolbar=true,        % show Acrobat's toolbar 
-    pdfmenubar=true,        % show Acrobat's menu 
-    pdffitwindow=false,     % window fit to page when opened 
-    pdfstartview={FitH},    % fits the width of the page to the window 
-    pdftitle={\TITLE},    % title 
-    pdfauthor={\AUTHOR},     % author 
-    pdfsubject={Subject},   % subject of the document 
-    pdfcreator={Gregor von Laszewski, Fugang Wang},   % creator of the document 
-    pdfproducer={}, % producer of the document 
-    pdfkeywords={bibliometrics} {hindex} {XSEDE} {FWCI}, % list of keywords 
-    pdfnewwindow=true,      % links in new window 
-    colorlinks=true,     % false: boxed links; true: colored links 
-    linkcolor=black,     % color of internal links (change box color with linkbordercolor) 
-    citecolor=black,     % color of links to bibliography 
-    filecolor=black,     % color of file links 
-    urlcolor=black       % color of external links 
-} 
-
-\begin{document}
 
 \copyrightyear{2018}
 \acmYear{2018}
@@ -78,7 +29,8 @@
 \acmDOI{10.1145/3219104.3219124}
 \acmISBN{978-1-4503-6446-1/18/07}
 
-%\title{\TITLE\vspace{-12pt}}
+\begin{document}
+
 \title{\TITLE}
 
 \author{Fugang Wang}
@@ -138,7 +90,7 @@
   \postcode{14203}
 }
 
-\renewcommand{\shortauthors}{F. Wang et al.}
+\renewcommand{\shortauthors}{F. Wang, G. von Laszewski, et al.}
 
 \begin{abstract}
 
@@ -192,6 +144,7 @@
 \keywords{Scientific impact, bibliometrics, h-index, Technology Audit
   Service, XDMoD, XSEDE}
 
+\settopmatter{printfolios=true}
 \maketitle
 
 \section{Introduction} 
@@ -571,7 +524,7 @@ science.
 
 The availability of all the publications for each field makes it
 possible to calculate other interesting statistics, in addition to the
-above presented FWCI results. In Table \ref{T:field_highly_cited} we
+previously presented FWCI results. In Table \ref{T:field_highly_cited} we
 display for each field the highly cited XSEDE papers (defined as top
 1\% and top 5\% in citation count in that field) and the percentage of
 how many XSEDE publications fall into each category. The results show
@@ -680,9 +633,24 @@ publications are cited more frequently than their non-XSEDE peers.
 
 \begin{figure}[htb!]
     \centering
-    \includegraphics[width=0.90\columnwidth]{images/ptranking_histogram.pdf}
+    \includegraphics[width=0.75\columnwidth]{images/ptranking_histogram.pdf}
     \caption{Histogram of Percentile Ranking}
     \label{F:ptranking_hist}
+%\end{figure}
+
+%\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.75\columnwidth]{images/ptranking_CDF.pdf}
+    \caption{Empirical Cumulative Distribution of Percentile Ranks}
+    \label{F:ptranking_cdf}
+%\end{figure}
+
+%\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.75\columnwidth]{images/ptranking_distribution.pdf}
+    \caption{Kernel Density of the distributions
+of XSEDE publications' percentile ranking and that of peers'}
+    \label{F:xd_peers_density}
 \end{figure}
 
 Figure \ref{F:ptranking_cdf} shows the empirical cumulative
@@ -699,20 +667,7 @@ weighted to the higher percentile ranks side again. This again shows
 that XSEDE publications tend to be more highly cited compared to their
 peers published in the same journal issue.
 
-\begin{figure}[htb!]
-    \centering
-    \includegraphics[width=0.90\columnwidth]{images/ptranking_CDF.pdf}
-    \caption{Empirical Cumulative Distribution of Percentile Ranks}
-    \label{F:ptranking_cdf}
-\end{figure}
 
-\begin{figure}[htb!]
-    \centering
-    \includegraphics[width=0.90\columnwidth]{images/ptranking_distribution.pdf}
-    \caption{Kernel Density of the distributions
-of XSEDE publications' percentile ranking and that of peers'}
-    \label{F:xd_peers_density}
-\end{figure}
 
 Table \ref{T:groups_stats} lists the average and median rankings and
 citations received by XSEDE and non-XSEDE peer publication groups.
@@ -782,7 +737,7 @@ the T-test to not only test if there is a statistical difference
 between the two groups, as having been shown by the several previous
 tests, but also to quantify the difference between the means. The
 t-test results for both citation count and percentile ranking are
-given below.
+given next.
 
 T-test for citation count (Welch Two sample t-test)
 \begin{itemize}
